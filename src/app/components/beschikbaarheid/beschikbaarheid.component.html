@@ -1,0 +1,53 @@
+<section id="beschikbaarheid" class="team">
+    <div class="container">
+
+      <div class="section-title" data-aos="fade-up">
+        <h2>Beschikbaarheid & Prijzen</h2>
+      </div>
+
+      <div class="row" data-aos="fade-up">
+        <div class="col-6 mt-5">
+          <table class="price-table" style="width:100%">
+            <tr>
+              <th>Periode</th>
+              <th>Prijs</th>
+            </tr>
+            <tr>
+              <td>Winter (Oktober, November)</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <td>Feestdagen (December, Januari</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <td>Voorjaar (Februari, Maart, April)</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <td>Lente (Mei, Juni)</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <td>Zomer (Juli & Augustus)</td>
+              <td>94</td>
+            </tr>
+            <tr>
+              <td>Nazomer (September)</td>
+              <td>94</td>
+            </tr>
+          </table>
+          <div class="row justify-content-center mt-4">
+            <div class="col-auto">
+              <button class="btn btn-primary book-button" (click)="openBookModal()">Boek hier!</button>
+            </div>
+            
+          </div>
+        </div>
+        <div class="col-6">
+          <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+      </div>
+      </div>
+
+    </div>
+  </section>

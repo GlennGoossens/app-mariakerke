@@ -1,10 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'app-mariakerke';
+  
+  /*@ViewChild('hero', { static: true }) hero: ElementRef<HTMLDivElement>;
+  @ViewChild('appartement', { static: false }) appartement: ElementRef<HTMLDivElement>;
+  @ViewChild('omgeving', { static: false }) omgeving: ElementRef<HTMLDivElement>;
+  @ViewChild('portfolio', { static: false }) portfolio: ElementRef<HTMLDivElement>;
+  @ViewChild('beschikbaarheid', { static: false }) beschikbaarheid: ElementRef<HTMLDivElement>;
+  @ViewChild('contact', { static: false }) contact: ElementRef<HTMLDivElement>;
+
+  isNavbarActive(identifier: string): boolean {
+    console.log('checking active state for identifier ' + identifier);
+    let rect = null;
+    if (identifier === 'hero' && this.hero) {
+      rect = this.hero.nativeElement.getBoundingClientRect();
+    }else if(identifier === 'appartement' && this.appartement){
+      rect = this.appartement.nativeElement.getBoundingClientRect();
+    }
+    if(rect !== null){
+      const topShown = rect.top >= 0;
+      return topShown;
+    }else{
+      return false;
+    }    
+  }*/
+
 }
