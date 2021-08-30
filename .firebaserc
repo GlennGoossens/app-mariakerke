@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "appartementmariakerke"
+  },
+  "targets": {
+    "appartementmariakerke": {
+      "hosting": {
+        "app-mariakerke": [
+          "appartementmariakerke"
+        ]
+      }
+    }
   }
 }

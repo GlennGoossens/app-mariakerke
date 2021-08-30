@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { BookModalComponent } from 'src/app/modals/book-modal/book-modal.component';
 
 @Component({
   selector: 'app-beschikbaarheid',
@@ -11,10 +10,12 @@ import { BookModalComponent } from 'src/app/modals/book-modal/book-modal.compone
 export class BeschikbaarheidComponent implements OnInit {
 
   calendarOptions: CalendarOptions = {
+    firstDay: 1,
+    height: 'auto',
     initialView: 'dayGridMonth',
     events: [
-      { title: 'Bezet', start: '2021-08-02',end:'2021-08-09' },
-      { title: 'Bezet', start: '2021-08-23',end:'2021-08-30' }
+      { title: 'Bezet', start: '2021-08-02', end: '2021-08-09' },
+      { title: 'Bezet', start: '2021-08-23', end: '2021-08-30' }
     ]
   };
 
@@ -22,16 +23,14 @@ export class BeschikbaarheidComponent implements OnInit {
 
 
   constructor(
-    private modalService: NgbModal
+    private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
-  openBookModal(){
-    this.modalService.open(BookModalComponent,{ centered:true, size: 'lg' }).result.then((result) =>{
-      window.alert("Boeking word doorgestuurd naar de database");
-    });
+  onNavigateToBook() {
+    this.router.navigate(['/book'])
   }
 
 }

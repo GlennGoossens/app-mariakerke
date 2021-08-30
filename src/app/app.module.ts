@@ -1,6 +1,11 @@
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from './../environments/environment';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -13,8 +18,13 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BookModalComponent } from './modals/book-modal/book-modal.component';
 import { HeroComponent } from './components/hero/hero.component';
+import { BookComponent } from './components/book/book.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { IndexComponent } from './components/index/index.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdminComponent } from './components/admin/admin.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -30,16 +40,25 @@ FullCalendarModule.registerPlugins([
     PortfolioComponent,
     OmgevingComponent,
     AppartementComponent,
-    BookModalComponent,
-    HeroComponent
+    HeroComponent,
+    BookComponent,
+    NavigationComponent,
+    FooterComponent,
+    IndexComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FullCalendarModule,
-    NgbModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
