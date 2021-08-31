@@ -20,10 +20,12 @@
         formControlName="telephone">
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" hidden required formControlName="period">
       <full-calendar #calendar [options]="calendarOptions"></full-calendar>
     </div>
     <div class="row  align-items-end justify-content-end">
+      <div *ngIf="bookedEvents.length" class="col-auto">
+        Booked {{bookedEvents.length}} week(s)
+      </div>
       <div class="col-auto">
         <button type="submit" [disabled]="!form.valid" class="btn btn-primary book-button"
           (click)="bookPeriod($event)">Boeken</button>

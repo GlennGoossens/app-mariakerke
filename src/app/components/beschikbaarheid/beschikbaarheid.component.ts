@@ -1,6 +1,8 @@
+import { FirebaseService } from 'src/app/services/firebase.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
+import { IBooking } from 'src/app/models/booking';
 
 @Component({
   selector: 'app-beschikbaarheid',
@@ -9,24 +11,41 @@ import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 })
 export class BeschikbaarheidComponent implements OnInit {
 
-  calendarOptions: CalendarOptions = {
-    firstDay: 1,
-    height: 'auto',
-    initialView: 'dayGridMonth',
-    events: [
-      { title: 'Bezet', start: '2021-08-02', end: '2021-08-09' },
-      { title: 'Bezet', start: '2021-08-23', end: '2021-08-30' }
-    ]
-  };
+  calendarOptions: CalendarOptions;
 
+  events: any[] = [];
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
 
 
   constructor(
-    private router: Router
+    private router: Router,
+    private firebaseService: FirebaseService
   ) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.firebaseService.getAllReservedOrBookedBookings().subscribe({
+        next: (res) => {
+          this.fillCalenderEvents(res);
+        }
+      })
+    }, 100);
+    setTimeout(() => {
+      this.calendarOptions = {
+        firstDay: 1,
+        height: 'auto',
+        initialView: 'dayGridMonth',
+        events: this.events,
+        displayEventTime: false
+      };
+    }, 2000);
+
+  }
+
+  fillCalenderEvents(bookings: IBooking[]) {
+    bookings.forEach((item: IBooking) => {
+      this.events.push({ title: 'Booked', start: item.startDate.toDate(), end: item.endDate.toDate() });
+    });
   }
 
   onNavigateToBook() {

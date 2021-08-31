@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IPeriod } from 'src/app/models/booking';
+import { IBooking } from 'src/app/models/booking';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
@@ -9,30 +9,23 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class AdminComponent implements OnInit {
 
-  availablePeriods: IPeriod[];
-  bookedPeriods: IPeriod[];
+  bookedBookings: IBooking[];
 
   constructor(
     public firebaseService: FirebaseService
   ) { }
 
   ngOnInit(): void {
-    this.firebaseService.getAllAvailablePeriods().subscribe({
-      next: (res) => {
-        console.log('available', res);
-        this.availablePeriods = res;
-      }
-    });
-    this.firebaseService.getAllReservedOrBookedPeriods().subscribe({
+    this.firebaseService.getAllReservedOrBookedBookings().subscribe({
       next: (res) => {
         console.log('booked', res);
-        this.bookedPeriods = res;
+        this.bookedBookings = res;
       }
     })
   }
 
-  onFillPeriods() {
-    this.firebaseService.fillPeriods(new Date());
+  onFillBookings() {
+    this.firebaseService.fillBookings(new Date(2021, 7, 30));
   }
 
 }
