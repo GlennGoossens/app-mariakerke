@@ -1,3 +1,4 @@
+import { MailService } from './../../services/mail.service';
 import { Router } from '@angular/router';
 import { FirebaseService } from './../../services/firebase.service';
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
@@ -5,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import { BookingStatus, IBooking } from 'src/app/models/booking';
 import { take } from 'rxjs/operators';
+import { Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'app-book',
@@ -30,6 +32,7 @@ export class BookComponent implements OnInit {
 
   constructor(
     private firebaseService: FirebaseService,
+    private mailService: MailService,
     private cd: ChangeDetectorRef,
     private router: Router
   ) { }
@@ -74,26 +77,29 @@ export class BookComponent implements OnInit {
   bookPeriod(event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
-    var bookIndex = 0;
-    this.bookedEvents.forEach((event) => {
-      var booking: IBooking = {
-        key: event.id,
-        firstName: this.form.value.firstName,
-        lastName: this.form.value.lastName,
-        email: this.form.value.email,
-        telephone: this.form.value.telephone,
-        status: BookingStatus.Reserved,
-        startDate: event.start,
-        endDate: event.end,
-        reference: this.generateReference()
-      }
-      this.firebaseService.updateBooking(booking).then((result) => {
-        bookIndex++;
-        if (bookIndex === this.bookedEvents.length) {
-          window.alert("Booking successfull");
-          this.router.navigate(['']);
-        }
-      }).catch((error) => window.alert("Booking Failed"));
+    var reference = this.generateReference();
+    var booking: IBooking = {
+      key: this.bookedEvents[0].id,
+      firstName: this.form.value.firstName,
+      lastName: this.form.value.lastName,
+      email: this.form.value.email,
+      telephone: this.form.value.telephone,
+      status: BookingStatus.Reserved,
+      startDate: this.bookedEvents[0].start,
+      endDate: this.bookedEvents[0].end,
+      reference: reference
+    }
+    if (this.bookedEvents.length !== 1) {
+      booking.startDate = Timestamp.fromDate(this.bookedEvents.sort((a, b) => a.start.getTime() - b.start.getTime())[0].start);
+      booking.endDate = Timestamp.fromDate(this.bookedEvents.sort((a, b) => b.end.getTime() - a.end.getTime())[0].end);
+      var bookingToKeepIndex = this.bookedEvents.findIndex(x => x.id === booking.key);
+      if (bookingToKeepIndex > -1) this.bookedEvents.splice(bookingToKeepIndex, 1);
+      this.bookedEvents.forEach(event => this.firebaseService.deleteBooking(event).then(result => console.log('result', result)).catch(error => console.error(error)));
+    }
+    this.firebaseService.updateBooking(booking).then((result) => {
+      window.alert("Booking successfull");
+      this.router.navigate(['']);
+      this.mailService.sendReservationBookedEmail(booking);
     });
   }
 

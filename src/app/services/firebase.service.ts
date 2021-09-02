@@ -4,7 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Timestamp } from 'firebase/firestore';
-import { StarTemplateContext } from '@ng-bootstrap/ng-bootstrap/rating/rating';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,12 @@ export class FirebaseService {
     else return this.bookings.doc(booking.key).update(booking);
   }
 
+  async deleteBooking(booking: IBooking): Promise<any> {
+    console.log('key to delete', booking.key);
+    this.bookings.doc(booking.key?.toString()).delete();
+    return this.bookings.doc(booking.key?.toString()).delete();
+  }
+
   getAllBookings(): Observable<IBooking[]> {
     return this.bookings.valueChanges({ idField: 'key' });
 
@@ -38,10 +44,16 @@ export class FirebaseService {
     );
   }
 
-  getAllBookabkeBookings(): Observable<IBooking[]> {
+  getAllBookableBookings(): Observable<IBooking[]> {
     return this.getAllAvailableBookings().pipe(
       map((data: IBooking[]) => data.filter(d => d.startDate >= Timestamp.fromDate(new Date())))
     )
+  }
+
+  getAllReservedBookings(): Observable<IBooking[]> {
+    return this.getAllBookings().pipe(
+      map((data: IBooking[]) => data.filter(d => d.status == 1))
+    );
   }
 
   getAllReservedOrBookedBookings(): Observable<IBooking[]> {
@@ -51,17 +63,18 @@ export class FirebaseService {
   }
 
   async fillBookings(start: Date): Promise<any> {
-    let end: Date = new Date();
-    end.setDate(start.getDate() + 6);
-    let stDate: Date = start;
+    let startDate = new Date(start);
+    let endDate: Date = new Date(start);
+    endDate.setHours(endDate.getHours() + 12);
+    endDate.setDate(startDate.getDate() + 6);
     for (var i = 0; i <= 250; i++) {
       this.bookings.add({
-        startDate: Timestamp.fromDate(stDate),
-        endDate: Timestamp.fromDate(end),
+        startDate: Timestamp.fromDate(startDate),
+        endDate: Timestamp.fromDate(endDate),
         status: 0
       });
-      end.setDate(end.getDate() + 7);
-      stDate.setDate(stDate.getDate() + 7);
+      endDate.setDate(endDate.getDate() + 7);
+      startDate.setDate(startDate.getDate() + 7);
     }
   }
 }

@@ -13,7 +13,7 @@ export class StatusToStringPipe implements PipeTransform {
       case BookingStatus.Reserved:
         return "Nog te betalen";
       case BookingStatus.Booked:
-        return "Geboekt";
+        return "Betaald";
     }
   }
 

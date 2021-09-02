@@ -25,6 +25,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { IndexComponent } from './components/index/index.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './components/admin/admin.component';
+import { DataTablesModule } from 'angular-datatables';
+import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
+import { StatusToStringPipe } from './pipes/status-to-string.pipe';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -45,7 +48,9 @@ FullCalendarModule.registerPlugins([
     NavigationComponent,
     FooterComponent,
     IndexComponent,
-    AdminComponent
+    AdminComponent,
+    TimestampToDatePipe,
+    StatusToStringPipe
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,8 @@ FullCalendarModule.registerPlugins([
     HttpClientModule,
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    DataTablesModule
   ],
   providers: [
   ],

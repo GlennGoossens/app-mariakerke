@@ -1,9 +1,86 @@
 <div class="admin-container container">
-  <h3>Backoffice</h3>
-  <!-- <button (click)="onFillBookings()">Fill Bookings</button> -->
+  <button (click)="onFillBookings()">Fill Bookings</button>
+  <!-- <button (click)="onSendTestEmail()">Send test email</button> -->
   <div class="row">
+    <h1>Openstaande betalingen</h1>
     <div class="col-12">
-
+      <table datatable [dtOptions]="dtReservedOptions" class="row-border hover">
+        <thead>
+          <tr>
+            <th>Naam</th>
+            <th>Email</th>
+            <th>Telefoon</th>
+            <th>Periode</th>
+            <th>Status</th>
+            <th>Referentie</th>
+            <th>Actie</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="reservedBookings?.length != 0">
+          <tr *ngFor="let booking of reservedBookings">
+            <td>{{ booking.firstName}} {{booking.lastName}}</td>
+            <td>{{ booking.email}}</td>
+            <td>{{ booking.telephone}}</td>
+            <td>{{ booking.startDate |timestampToDate | date:"dd/MM/yyyy"}} -
+              {{booking.endDate|timestampToDate | date:"dd/MM/yyyy"}}</td>
+            <td>
+              <span class="badge"
+                [ngClass]="{'badge-danger': booking.status === 1,'badge-success':booking.status === 2}">{{ booking.status | statusToString}}</span>
+            </td>
+            <td>{{ booking.reference}}</td>
+            <td>
+              <button class="btn btn-success" (click)="onFulfillPayment(booking)"><i
+                  class="bi bi-check-lg"></i></button>
+              <button class="btn btn-danger" (click)="onClearBooking(booking)"><i class="bi bi-x-lg"></i></button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="reservedBookings?.length == 0">
+          <tr>
+            <td colspan="3" class="no-data-available">No data!</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <h1>Alle boekingen</h1>
+    <div class="col-12">
+      <table datatable [dtOptions]="dtBookedOptions" class="row-border hover">
+        <thead>
+          <tr>
+            <th>Naam</th>
+            <th>Email</th>
+            <th>Telefoon</th>
+            <th>Periode</th>
+            <th>Status</th>
+            <th>Referentie</th>
+            <th>Actie</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="bookedBookings?.length != 0">
+          <tr *ngFor="let booking of bookedBookings">
+            <td>{{ booking.firstName}} {{booking.lastName}}</td>
+            <td>{{ booking.email}}</td>
+            <td>{{ booking.telephone}}</td>
+            <td>{{ booking.startDate |timestampToDate | date:"dd/MM/yyyy"}} -
+              {{booking.endDate|timestampToDate | date:"dd/MM/yyyy"}}</td>
+            <td>
+              <span class="badge"
+                [ngClass]="{'badge-danger': booking.status === 1,'badge-success':booking.status === 2}">{{ booking.status | statusToString}}</span>
+            </td>
+            <td>{{ booking.reference}}</td>
+            <td>
+              <button class="btn btn-danger" (click)="onClearBooking(booking)"><i class="bi bi-x-lg"></i></button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="bookedBookings?.length == 0">
+          <tr>
+            <td colspan="3" class="no-data-available">No data!</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
