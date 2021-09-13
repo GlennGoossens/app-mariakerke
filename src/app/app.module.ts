@@ -28,6 +28,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { DataTablesModule } from 'angular-datatables';
 import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
 import { StatusToStringPipe } from './pipes/status-to-string.pipe';
+import { ToastContainerComponent } from './components/toast-container/toast-container.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -50,7 +51,8 @@ FullCalendarModule.registerPlugins([
     IndexComponent,
     AdminComponent,
     TimestampToDatePipe,
-    StatusToStringPipe
+    StatusToStringPipe,
+    ToastContainerComponent
   ],
   imports: [
     BrowserModule,
