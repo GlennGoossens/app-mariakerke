@@ -7,6 +7,7 @@ import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import { BookingStatus, IBooking } from 'src/app/models/booking';
 import { take } from 'rxjs/operators';
 import { Timestamp } from 'firebase/firestore';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-book',
@@ -34,7 +35,8 @@ export class BookComponent implements OnInit {
     private firebaseService: FirebaseService,
     private mailService: MailService,
     private cd: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private toastService: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -97,7 +99,7 @@ export class BookComponent implements OnInit {
       this.bookedEvents.forEach(event => this.firebaseService.deleteBooking(event).then(result => console.log('result', result)).catch(error => console.error(error)));
     }
     this.firebaseService.updateBooking(booking).then((result) => {
-      window.alert("Booking successfull");
+      this.toastService.show('Booking succesfull', { classname: 'bg-success text-light', delay: 10000 });
       this.router.navigate(['']);
       this.mailService.sendReservationBookedEmail(booking);
     });
