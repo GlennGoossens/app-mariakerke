@@ -8,6 +8,7 @@ import { BookingStatus, IBooking } from 'src/app/models/booking';
 import { take } from 'rxjs/operators';
 import { Timestamp } from 'firebase/firestore';
 import { ToastService } from 'src/app/services/toast.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-book',
@@ -33,6 +34,7 @@ export class BookComponent implements OnInit {
 
   constructor(
     private firebaseService: FirebaseService,
+    private translateService:TranslateService,
     private mailService: MailService,
     private cd: ChangeDetectorRef,
     private router: Router,
@@ -68,7 +70,7 @@ export class BookComponent implements OnInit {
     bookings.forEach((item: IBooking) => {
       this.events.push({
         id: item.key,
-        title: 'Free',
+        title: this.translateService.instant('app.free'),
         start: item.startDate.toDate(),
         end: item.endDate.toDate(),
         backgroundColor: 'lightblue'
@@ -99,7 +101,7 @@ export class BookComponent implements OnInit {
       this.bookedEvents.forEach(event => this.firebaseService.deleteBooking(event).then(result => console.log('result', result)).catch(error => console.error(error)));
     }
     this.firebaseService.updateBooking(booking).then((result) => {
-      this.toastService.show('Booking succesfull', { classname: 'bg-success text-light', delay: 10000 });
+      this.toastService.show(this.translateService.instant('app.booking-success'), { classname: 'bg-success text-light', delay: 10000 });
       this.router.navigate(['']);
       this.mailService.sendReservationBookedEmail(booking);
     });
@@ -144,6 +146,10 @@ export class BookComponent implements OnInit {
     this.form.controls.bookings.setValue(this.bookedEvents);
     this.cd.detectChanges();
     this.updateCalendar();
+  }
+
+  getPlaceholderText(key:string):string{
+    return this.translateService.instant(key);
   }
 
 }

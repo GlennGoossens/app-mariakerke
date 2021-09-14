@@ -7,13 +7,23 @@
 
     <nav #navbar id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto" href="#hero">Home</a></li>
-        <li><a class="nav-link scrollto" href="#appartement">Appartement</a></li>
-        <li><a class="nav-link scrollto" href="#omgeving">Omgeving</a></li>
-        <li><a class="nav-link scrollto" href="#portfolio">Foto's</a></li>
-        <li><a class="nav-link scrollto" href="#beschikbaarheid">Beschikbaarheid & Prijzen</a></li>
-        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        <li><button class="btn btn-primary book-button" (click)="onNavigateToBook()">Boek hier!</button></li>
+        <li><a class="nav-link scrollto" href="#hero">{{'app.home' |translate}}</a></li>
+        <li><a class="nav-link scrollto" href="#appartement">{{'app.appartement'|translate}}</a></li>
+        <li><a class="nav-link scrollto" href="#omgeving">{{'app.surroundings'|translate}}</a></li>
+        <li><a class="nav-link scrollto" href="#portfolio">{{'app.photos'|translate}}</a></li>
+        <li><a class="nav-link scrollto" href="#beschikbaarheid">{{'app.availability-prices'|translate}}</a></li>
+        <li><a class="nav-link scrollto" href="#contact">{{'app.contact'|translate}}</a></li>
+        <li><button class="btn btn-primary book-button" (click)="onNavigateToBook()">{{'app.book-here'|translate}}</button></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{getCurrentLang()}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#" (click)="changeLang($event,'nl')">NL</a></li>
+            <li><a class="dropdown-item" href="#" (click)="changeLang($event,'en')">EN</a></li>
+            <li><a class="dropdown-item" href="#" (click)="changeLang($event,'fr')">FR</a></li>
+          </ul>
+        </li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->

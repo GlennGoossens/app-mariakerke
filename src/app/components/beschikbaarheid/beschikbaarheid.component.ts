@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import { IBooking } from 'src/app/models/booking';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-beschikbaarheid',
@@ -19,6 +20,7 @@ export class BeschikbaarheidComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private translateService:TranslateService,
     private firebaseService: FirebaseService
   ) { }
 
@@ -44,7 +46,7 @@ export class BeschikbaarheidComponent implements OnInit {
 
   fillCalenderEvents(bookings: IBooking[]) {
     bookings.forEach((item: IBooking) => {
-      this.events.push({ title: 'Booked', start: item.startDate.toDate(), end: item.endDate.toDate() });
+      this.events.push({ title: this.translateService.instant('app.booked'), start: item.startDate.toDate(), end: item.endDate.toDate() });
     });
   }
 

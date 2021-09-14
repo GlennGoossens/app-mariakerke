@@ -1,4 +1,5 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -29,5 +30,13 @@ export class AppComponent {
       return false;
     }    
   }*/
+
+  /**
+   *
+   */
+  constructor(private translateService:TranslateService) {
+    translateService.setDefaultLang('nl');
+    translateService.use('nl');
+  }
 
 }

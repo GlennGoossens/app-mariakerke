@@ -5,7 +5,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from './../environments/environment';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -29,6 +29,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
 import { StatusToStringPipe } from './pipes/status-to-string.pipe';
 import { ToastContainerComponent } from './components/toast-container/toast-container.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -62,6 +64,16 @@ FullCalendarModule.registerPlugins([
     HttpClientModule,
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
+    TranslateModule.forRoot(
+      {
+        defaultLanguage: 'nl',
+        loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+        }
+    }
+    ),
     AngularFirestoreModule,
     DataTablesModule
   ],
@@ -70,3 +82,7 @@ FullCalendarModule.registerPlugins([
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/locales/', '.json');
+}
