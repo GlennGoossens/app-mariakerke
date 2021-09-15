@@ -7,3 +7,7 @@
 .price-table tr:not(:last-child){
     border-bottom: 1px solid lightgray;
 }
+
+.text-waarborg{
+    color:#1bac91;
+}

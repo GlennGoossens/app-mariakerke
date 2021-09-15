@@ -31,6 +31,9 @@ import { StatusToStringPipe } from './pipes/status-to-string.pipe';
 import { ToastContainerComponent } from './components/toast-container/toast-container.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ImageModalComponent } from './components/image-modal/image-modal.component';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { LoginComponent } from './components/login/login.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -54,7 +57,9 @@ FullCalendarModule.registerPlugins([
     AdminComponent,
     TimestampToDatePipe,
     StatusToStringPipe,
-    ToastContainerComponent
+    ToastContainerComponent,
+    ImageModalComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +80,7 @@ FullCalendarModule.registerPlugins([
     }
     ),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     DataTablesModule
   ],
   providers: [

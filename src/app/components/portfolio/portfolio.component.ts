@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ImageModalComponent } from '../image-modal/image-modal.component';
 
 @Component({
   selector: 'app-portfolio',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortfolioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
+  }
+
+  openInModal(event:MouseEvent,link:string){
+    event.preventDefault();
+    event.stopPropagation();
+    console.log(event);
+    const modalRef = this.modalService.open(ImageModalComponent,{centered:true,size: 'lg'});
+    modalRef.componentInstance.link = link;
   }
 
 }

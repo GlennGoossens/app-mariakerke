@@ -11,128 +11,110 @@
             <li data-filter="*" class="filter-active">{{'app.all'|translate}}</li>
             <li data-filter=".filter-kamer">{{'app.rooms'|translate}}</li>
             <li data-filter=".filter-keuken">{{'app.kitchen'|translate}}</li>
-            <li data-filter=".filter-uitzicht">{{'app.view'|translate}}</li>
             <li data-filter=".filter-badkamer">{{'app.bathroom'|translate}}</li>
+            <li data-filter=".filter-woonruimte">{{'app.living-area'|translate}}</li>
+            <li data-filter=".filter-atlantikwall">{{'app.atlantikwall'|translate}}</li>
+            <li data-filter=".filter-omgeving">{{'app.surroundings'|translate}}</li>
           </ul>
         </div>
       </div>
 
       <div class="row portfolio-container" data-aos="fade-up">
 
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/buitenaanzicht.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.outside-view'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/buitenaanzicht.JPG" (click)="openInModal($event,'assets/img/appartement/buitenaanzicht.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="col-lg-4 col-md-6 portfolio-item filter-kamer">
           <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/kamer-1.jpg" class="img-fluid" alt="">
+            <img src="assets/img/appartement/kamer-1-1.JPG" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>{{'app.room'|translate}} 1</h4>
               <p>{{'app.two-person-bedroom'|translate}}</p>
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/kamer-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Kamer 1"><i class="bx bx-plus"></i></a>
+                <a href="assets/img/appartement/kamer-1-1.JPG" (click)="openInModal($event,'assets/img/appartement/kamer-1-1.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-badkamer">
+        <div class="col-lg-4 col-md-6 portfolio-item filter-kamer">
           <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/bathroom-1.jpg" class="img-fluid" alt="">
+            <img src="assets/img/appartement/kamer-1-2.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.room'|translate}} 1</h4>
+              <p>{{'app.two-person-bedroom'|translate}}</p>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/kamer-1-2.JPG" (click)="openInModal($event,'assets/img/appartement/kamer-1-2.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-badkamer" >
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/badkamer-1.JPG" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>{{'app.bathroom'|translate}}</h4>
               <p>{{'app.bath-and-shower'|translate}}</p>
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/bathroom-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Badkamer"><i class="bx bx-plus"></i></a>
+                <a href="assets/img/appartement/badkamer-1.JPG" (click)="openInModal($event,'assets/img/appartement/badkamer-1.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
               </div>
             </div>
           </div>
         </div>
 
-        <!--
-        <div class="col-lg-4 col-md-6 portfolio-item filter-kamer">
+        <div class="col-lg-4 col-md-6 portfolio-item filter-woonruimte">
           <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/kamer-2.jpg" class="img-fluid" alt="">
+            <img src="assets/img/appartement/woonruimte-1.JPG" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>Kamer 2</h4>
-              <p>Eenpersoons</p>
+              <h4>{{'app.living-area'|translate}}</h4>
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/kamer-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Kamer 2"><i class="bx bx-plus"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-    -->
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-uitzicht">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/uitzicht-2.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>{{'app.seaside-view'|translate}}</h4>
-              <p></p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/uitzicht-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Uitzicht 2"><i class="bx bx-plus"></i></a>
+                <a href="assets/img/appartement/woonruimte-1.JPG" (click)="openInModal($event,'assets/img/appartement/woonruimte-1.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-badkamer">
+        <div class="col-lg-4 col-md-6 portfolio-item filter-woonruimte">
           <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/bathroom-2.jpg" class="img-fluid" alt="">
+            <img src="assets/img/appartement/woonruimte-2.JPG" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>{{'app.bathroom'|translate}} 2</h4>
-              <p></p>
+              <h4>{{'app.living-area'|translate}}</h4>
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/bathroom-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Badkamer 2"><i class="bx bx-plus"></i></a>
+                <a href="assets/img/appartement/woonruimte-2.JPG" (click)="openInModal($event,'assets/img/appartement/woonruimte-2.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-kamer">
+        <div class="col-lg-4 col-md-6 portfolio-item filter-woonruimte">
           <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/kamer-3.jpg" class="img-fluid" alt="">
+            <img src="assets/img/appartement/woonruimte-3.JPG" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>{{'app.room'|translate}} 3</h4>
-              <p>{{'app.two-person-bedroom'|translate}}</p>
+              <h4>{{'app.living-area'|translate}}</h4>
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/kamer-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Kamer 3"><i class="bx bx-plus"></i></a>
+                <a href="assets/img/appartement/woonruimte-3.JPG" (click)="openInModal($event,'assets/img/appartement/woonruimte-3.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
               </div>
             </div>
           </div>
         </div>
 
-        <!--
-        <div class="col-lg-4 col-md-6 portfolio-item filter-uitzicht">
+        <div class="col-lg-4 col-md-6 portfolio-item filter-woonruimte">
           <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/uitzicht-1.jpg" class="img-fluid" alt="">
+            <img src="assets/img/appartement/woonruimte-4.JPG" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>Zeezicht</h4>
-              <p>Zicht op zee</p>
+              <h4>{{'app.living-area'|translate}}</h4>
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/uitzicht-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Uitzicht 1"><i class="bx bx-plus"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-    -->
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-uitzicht">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/uitzicht-3.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>{{'app.seaside-view'|translate}}</h4>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/uitzicht-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Uitzicht 3"><i class="bx bx-plus"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-badkamer">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/bathroom-3.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>{{'app.bathroom'|translate}}</h4>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/bathroom-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Badkamer 3"><i class="bx bx-plus"></i></a>
+                <a href="assets/img/appartement/woonruimte-4.JPG" (click)="openInModal($event,'assets/img/appartement/woonruimte-4.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
               </div>
             </div>
           </div>
@@ -140,43 +122,221 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-keuken">
           <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/kitchen-1.jpg" class="img-fluid" alt="">
+            <img src="assets/img/appartement/keuken-1.JPG" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>{{'app.kitchen'|translate}}</h4>
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/kitchen-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Keuken 1"><i class="bx bx-plus"></i></a>
+                <a href="assets/img/appartement/keuken-1.JPG" (click)="openInModal($event,'assets/img/appartement/keuken-1.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
               </div>
             </div>
           </div>
         </div>
 
+        <div class="col-lg-4 col-md-6 portfolio-item filter-keuken">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/keuken-2.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.kitchen'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/keuken-2.JPG" (click)="openInModal($event,'assets/img/appartement/keuken-2.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/uitzicht-1.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.view'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/uitizcht-1.JPG" (click)="openInModal($event,'assets/img/appartement/uitzicht-1.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+<!--
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/uitzicht-2.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.view'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/uitzicht-2.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/uitzicht-3.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.view'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/uitizcht-3.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/omgeving-1.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.surroundings'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/omgeving-1.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>-->
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/omgeving-2.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.surroundings'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/omgeving-2.JPG" (click)="openInModal($event,'assets/img/appartement/omgeving-2.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/omgeving-3.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.surroundings'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/omgeving-3.JPG" (click)="openInModal($event,'assets/img/appartement/omgeving-3.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
         <!--
-        <div class="col-lg-4 col-md-6 portfolio-item filter-keuken">
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
           <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/kitchen-2.jpg" class="img-fluid" alt="">
+            <img src="assets/img/appartement/omgeving-4.JPG" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>Keuken</h4>
+              <h4>{{'app.surroundings'|translate}}</h4>
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/kitchen-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Keuken 2"><i class="bx bx-plus"></i></a>
+                <a href="assets/img/appartement/omgeving-4.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-keuken">
+        <div class="col-lg-4 col-md-6 portfolio-item filter-atlantikwall">
           <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/kitchen-3.jpg" class="img-fluid" alt="">
+            <img src="assets/img/appartement/atlantikwall-1.JPG" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>Keuken</h4>
+              <h4>{{'app.atlantikwall'|translate}}</h4>
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/kitchen-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Keuken 3"><i class="bx bx-plus"></i></a>
+                <a href="assets/img/appartement/atlantikwall-1.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>-->
+        <div class="col-lg-4 col-md-6 portfolio-item filter-atlantikwall">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/atlantikwall-2.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.atlantikwall'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/atlantikwall-2.JPG" (click)="openInModal($event,'assets/img/appartement/atlantikwall-2.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
               </div>
             </div>
           </div>
         </div>
-    -->
-
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/strand-1.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.beach'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/strand-1.JPG" (click)="openInModal($event,'assets/img/appartement/strand-1.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/strand-2.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.beach'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/strand-2.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/strand-3.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.beach'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/strand-3.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/strand-4.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.beach'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/strand-4.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>-->
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/zee-1.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.sea'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/zee-1.JPG" (click)="openInModal($event,'assets/img/appartement/zee-1.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/zee-2.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.sea'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/zee-2.JPG" (click)="openInModal($event,'assets/img/appartement/zee-2.JPG')" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/zee-3.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.sea'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/zee-3.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-omgeving">
+          <div class="portfolio-wrap">
+            <img src="assets/img/appartement/zee-4.JPG" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{'app.sea'|translate}}</h4>
+              <div class="portfolio-links">
+                <a href="assets/img/appartement/zee-4.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox"   ><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>-->
       </div>
-
     </div>
   </section>
