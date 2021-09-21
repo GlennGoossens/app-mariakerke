@@ -1,10 +1,8 @@
 import { MailService } from './../../services/mail.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BookingStatus, IBooking } from 'src/app/models/booking';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Timestamp } from 'firebase/firestore';
-import { Subject } from 'rxjs';
-import { transpileModule } from 'typescript';
 
 class DataTablesResponse {
   data: any[];
@@ -16,10 +14,9 @@ class DataTablesResponse {
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-
   dtBookedOptions: DataTables.Settings = {};
   dtReservedOptions: DataTables.Settings = {};
 
@@ -29,7 +26,7 @@ export class AdminComponent implements OnInit {
   constructor(
     public firebaseService: FirebaseService,
     public mailService: MailService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     const that = this;
@@ -45,12 +42,12 @@ export class AdminComponent implements OnInit {
             callback({
               recordsTotal: res.length,
               recordsFiltered: res.length,
-              data: []
+              data: [],
             });
-          }
+          },
         });
-      }
-    }
+      },
+    };
 
     this.dtReservedOptions = {
       pagingType: 'full_numbers',
@@ -64,14 +61,13 @@ export class AdminComponent implements OnInit {
             callback({
               recordsTotal: res.length,
               recordsFiltered: res.length,
-              data: []
+              data: [],
             });
-          }
+          },
         });
-      }
-    }
+      },
+    };
   }
-
 
   onFulfillPayment(booking: IBooking) {
     booking.status = BookingStatus.Booked;
@@ -79,20 +75,26 @@ export class AdminComponent implements OnInit {
   }
 
   onClearBooking(booking: IBooking) {
+    console.log('start clear bookings');
     const orgStartDate = booking.startDate.toDate();
-    let dayDiff = Math.round((booking.endDate.toDate().getTime() - booking.startDate.toDate().getTime()) / (1000 * 60 * 60 * 24));
+    let dayDiff = Math.round(
+      (booking.endDate.toDate().getTime() -
+        booking.startDate.toDate().getTime()) /
+        (1000 * 60 * 60 * 24)
+    );
     if (dayDiff > 7) {
-      dayDiff = (dayDiff / 7) - 1;
+      dayDiff = dayDiff / 7 - 1;
       let newStartDate = new Date(booking.startDate.toDate());
       newStartDate.setDate(booking.startDate.toDate().getDate() + 7);
+      newStartDate.setHours(newStartDate.getHours() + 12);
       let newEndDate = new Date(newStartDate);
       newEndDate.setDate(newEndDate.getDate() + 6);
       for (let i = 0; i < dayDiff; i++) {
         let newBooking: IBooking = {
           status: BookingStatus.Free,
           startDate: Timestamp.fromDate(newStartDate),
-          endDate: Timestamp.fromDate(newEndDate)
-        }
+          endDate: Timestamp.fromDate(newEndDate),
+        };
         this.firebaseService.createBooking(newBooking);
         newStartDate.setDate(newStartDate.getDate() + 7);
         newEndDate.setDate(newEndDate.getDate() + 7);
@@ -106,7 +108,6 @@ export class AdminComponent implements OnInit {
     this.firebaseService.updateBooking(booking);
   }
 
-
   // TEST CODE
   onFillBookings() {
     this.firebaseService.fillBookings(new Date(2021, 7, 30));
@@ -118,9 +119,8 @@ export class AdminComponent implements OnInit {
       startDate: Timestamp.fromDate(new Date(2020, 7, 30)),
       endDate: Timestamp.fromDate(new Date(2020, 8, 5)),
       reference: 'testRef',
-      status: 2
+      status: 2,
     };
     this.mailService.sendReservationBookedEmail(bookings);
   }
-
 }

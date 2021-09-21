@@ -4,7 +4,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Timestamp } from 'firebase/firestore';
-import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -29,9 +28,8 @@ export class FirebaseService {
   }
 
   async deleteBooking(booking: IBooking): Promise<any> {
-    console.log('key to delete', booking.key);
-    this.bookings.doc(booking.key?.toString()).delete();
-    return this.bookings.doc(booking.key?.toString()).delete();
+    this.bookings.doc(booking.id?.toString()).delete();
+    return this.bookings.doc(booking.id?.toString()).delete();
   }
 
   getAllBookings(): Observable<IBooking[]> {

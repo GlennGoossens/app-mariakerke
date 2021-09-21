@@ -101,7 +101,7 @@ export class BookComponent implements OnInit {
       this.bookedEvents.forEach(event => this.firebaseService.deleteBooking(event).then(result => console.log('result', result)).catch(error => console.error(error)));
     }
     this.firebaseService.updateBooking(booking).then((result) => {
-      this.toastService.show(this.translateService.instant('app.booking-success'), { classname: 'bg-success text-light', delay: 10000 });
+      this.toastService.show(this.translateService.instant('app.booking-success'), { classname: 'bg-success text-light', delay: 5000 });
       this.router.navigate(['']);
       this.mailService.sendReservationBookedEmail(booking);
     });

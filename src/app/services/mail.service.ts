@@ -1,5 +1,4 @@
 import { Timestamp } from 'firebase/firestore';
-import { take } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import * as emailjs from 'emailjs-com';
 import { IBooking } from '../models/booking';
@@ -41,10 +40,6 @@ export class MailService {
   }
 
   sendPaymentConfirmedEmail(booking: IBooking) {
-
-  }
-
-  sendEmail() {
 
   }
 
