@@ -69,6 +69,8 @@ FullCalendarModule.registerPlugins([
     HttpClientModule,
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     TranslateModule.forRoot(
       {
         defaultLanguage: 'nl',
@@ -79,8 +81,6 @@ FullCalendarModule.registerPlugins([
         }
     }
     ),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
     DataTablesModule
   ],
   providers: [

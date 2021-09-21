@@ -17,7 +17,6 @@ export class PortfolioComponent implements OnInit {
   openInModal(event:MouseEvent,link:string){
     event.preventDefault();
     event.stopPropagation();
-    console.log(event);
     const modalRef = this.modalService.open(ImageModalComponent,{centered:true,size: 'lg'});
     modalRef.componentInstance.link = link;
   }

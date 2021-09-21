@@ -34,11 +34,9 @@ export class MailService {
 
     emailjs.send(this.SERVICE_ID, this.BOOKED_TEMPLATE_ID, templateParams, this.USER_ID)
       .then((result) => {
-        console.log(result.text);
       },
         (error) => {
           alert("An error occured while sending the reservation mail");
-          console.log(error.text);
         });
   }
 
