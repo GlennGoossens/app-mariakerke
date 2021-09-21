@@ -72,6 +72,7 @@ export class AdminComponent implements OnInit {
   onFulfillPayment(booking: IBooking) {
     booking.status = BookingStatus.Booked;
     this.firebaseService.updateBooking(booking);
+    this.mailService.sendPaymentConfirmedEmail(booking);
   }
 
   onClearBooking(booking: IBooking) {

@@ -109,8 +109,8 @@ export class BookComponent implements OnInit {
 
   generateReference(): string {
     let text = "";
-    let possible = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-    for (let i = 0; i < 10; i++) {
+    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    for (let i = 0; i < 5; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return text;
@@ -128,7 +128,10 @@ export class BookComponent implements OnInit {
   onSelectFreePeriod(info: any) {
     var tempEvents = this.events.slice();
     var eventObj = this.infoToEventObject(info);
-    if (this.bookedEvents.find(e => e.id === eventObj.id) !== undefined) {
+    if(eventObj.start < new Date()){
+      this.toastService.show(this.translateService.instant('app.booking-unavailable'), { classname: 'bg-warning text-dark', delay: 5000 })
+    }else{
+      if (this.bookedEvents.find(e => e.id === eventObj.id) !== undefined) {
       let eventToFree = tempEvents.find(e => e.id === info.event.id);
       eventToFree.backgroundColor = 'lightblue';
       let index = tempEvents.findIndex(e => e.id === info.event.id);
@@ -146,6 +149,7 @@ export class BookComponent implements OnInit {
     this.form.controls.bookings.setValue(this.bookedEvents);
     this.cd.detectChanges();
     this.updateCalendar();
+    }
   }
 
   getPlaceholderText(key:string):string{
