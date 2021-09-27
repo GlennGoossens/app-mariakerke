@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import { IBooking } from 'src/app/models/booking';
 import { TranslateService } from '@ngx-translate/core';
+import { Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'app-beschikbaarheid',
@@ -46,7 +47,7 @@ export class BeschikbaarheidComponent implements OnInit {
 
   fillCalenderEvents(bookings: IBooking[]) {
     bookings.forEach((item: IBooking) => {
-      this.events.push({ title: this.translateService.instant('app.booked'), start: item.startDate.toDate(), end: item.endDate.toDate() });
+      this.events.push({ title: this.translateService.instant('app.booked'), start: (item.startDate as Timestamp).toDate(), end: (item.endDate as Timestamp).toDate() });
     });
   }
 

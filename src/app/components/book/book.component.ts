@@ -71,8 +71,8 @@ export class BookComponent implements OnInit {
       this.events.push({
         id: item.key,
         title: this.translateService.instant('app.free'),
-        start: item.startDate.toDate(),
-        end: item.endDate.toDate(),
+        start: (item.startDate as Timestamp).toDate(),
+        end: (item.endDate as Timestamp).toDate(),
         backgroundColor: 'lightblue'
       });
     });
@@ -101,9 +101,9 @@ export class BookComponent implements OnInit {
       this.bookedEvents.forEach(event => this.firebaseService.deleteBooking(event).then(result => console.log('result', result)).catch(error => console.error(error)));
     }
     this.firebaseService.updateBooking(booking).then((result) => {
+      this.mailService.sendReservationBookedEmail(booking);
       this.toastService.show(this.translateService.instant('app.booking-success'), { classname: 'bg-success text-light', delay: 5000 });
       this.router.navigate(['']);
-      this.mailService.sendReservationBookedEmail(booking);
     });
   }
 

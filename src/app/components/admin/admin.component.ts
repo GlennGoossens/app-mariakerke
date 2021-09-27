@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { BookingStatus, IBooking } from 'src/app/models/booking';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Timestamp } from 'firebase/firestore';
+import { ToastService } from 'src/app/services/toast.service';
+import { TranslateService } from '@ngx-translate/core';
 
 class DataTablesResponse {
   data: any[];
@@ -25,7 +27,9 @@ export class AdminComponent implements OnInit {
 
   constructor(
     public firebaseService: FirebaseService,
-    public mailService: MailService
+    public mailService: MailService,
+    public toastService:ToastService,
+    public translateService:TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -77,16 +81,16 @@ export class AdminComponent implements OnInit {
 
   onClearBooking(booking: IBooking) {
     console.log('start clear bookings');
-    const orgStartDate = booking.startDate.toDate();
+    const orgStartDate = (booking.startDate as Timestamp).toDate();
     let dayDiff = Math.round(
-      (booking.endDate.toDate().getTime() -
-        booking.startDate.toDate().getTime()) /
+      ((booking.endDate as Timestamp).toDate().getTime() -
+        (booking.startDate as Timestamp).toDate().getTime()) /
         (1000 * 60 * 60 * 24)
     );
     if (dayDiff > 7) {
       dayDiff = dayDiff / 7 - 1;
-      let newStartDate = new Date(booking.startDate.toDate());
-      newStartDate.setDate(booking.startDate.toDate().getDate() + 7);
+      let newStartDate = new Date((booking.startDate as Timestamp).toDate());
+      newStartDate.setDate((booking.startDate as Timestamp).toDate().getDate() + 7);
       newStartDate.setHours(newStartDate.getHours() + 12);
       let newEndDate = new Date(newStartDate);
       newEndDate.setDate(newEndDate.getDate() + 6);
@@ -123,5 +127,10 @@ export class AdminComponent implements OnInit {
       status: 2,
     };
     this.mailService.sendReservationBookedEmail(bookings);
+  }
+
+  onToastTest(){
+    this.toastService.show(this.translateService.instant('app.booking-success'), { classname: 'bg-success text-light', delay: 500000 });
+      
   }
 }

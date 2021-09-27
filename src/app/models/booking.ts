@@ -8,8 +8,8 @@ export interface IBooking {
     email?: string;
     telephone?: string;
     status: BookingStatus;
-    startDate: Timestamp;
-    endDate: Timestamp;
+    startDate: Timestamp | Date;
+    endDate: Timestamp | Date;
     reference?: string;
 }
 

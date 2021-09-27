@@ -6,8 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TimestampToDatePipe implements PipeTransform {
 
-  transform(value: Timestamp, ...args: unknown[]): Date {
-    return value.toDate();
+  transform(value: Timestamp | Date, ...args: unknown[]): Date {
+    return (value as Timestamp).toDate();
   }
 
 }

@@ -7,24 +7,24 @@ import { IBooking } from '../models/booking';
   providedIn: 'root',
 })
 export class MailService {
-  public USER_ID: string = 'user_dBuCmIHFCIWNWog1G7TVJ';
+  public USER_ID: string = 'user_cLksgF4oqKCQTbc2Q08gB';
   public BOOKED_TEMPLATE_ID = 'reservation_booked';
   public PAYMENT_TEMPLATE_ID = 'payment_done';
-  public SERVICE_ID = 'service_d941vdm';
+  public SERVICE_ID = 'service_y8rekd5';
 
   constructor() {
     this.setupMailer();
   }
 
   setupMailer() {
-    emailjs.init('user_dBuCmIHFCIWNWog1G7TVJ');
+    emailjs.init('user_cLksgF4oqKCQTbc2Q08gB');
   }
 
   sendReservationBookedEmail(booking: IBooking) {
     var templateParams = {
       firstName: booking.firstName,
-      startDate: (booking.startDate as Timestamp).toDate().toDateString(),
-      endDate: (booking.endDate as Timestamp).toDate().toDateString(),
+      startDate: (booking.startDate as Date).toDateString(),
+      endDate: (booking.endDate as Date).toDateString(),
       reference: booking.reference,
       email: booking.email,
     };
